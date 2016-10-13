@@ -4,7 +4,7 @@
   "description": "first application restful nodejs",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "./node_modules/nodemon/bin/nodemon.js server.js"
   },
   "keywords": [
     "screencast",
@@ -19,6 +19,7 @@
     "jwt-simple": "^0.4.1",
     "mongoose": "^4.1.1",
     "morgan": "^1.6.1",
+    "nodemon": "^1.11.0",
     "validator": "^4.0.1"
   }
 }
