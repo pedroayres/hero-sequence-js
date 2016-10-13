@@ -4,7 +4,7 @@
   "description": "first application restful nodejs",
   "main": "app.js",
   "scripts": {
-    "dev": "./node_modules/nodemon/bin/nodemon.js server/server.js"
+    "dev": "./node_modules/nodemon/bin/nodemon.js server.js"
   },
   "keywords": [
     "screencast",
