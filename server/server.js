@@ -4,7 +4,7 @@ var logger      = require('morgan');
 var bodyParser  = require('body-parser');
 var mongoose    = require('mongoose');
 var app         = express();
-var dbInfo      = 'mongodb://127.0.0.1/project_base';
+var dbInfo      = 'mongodb://127.0.0.1/herosequence';
 var mongoose    = require('mongoose').connect(dbInfo);
 var db          = mongoose.connection;
 
@@ -26,13 +26,7 @@ app.all('/*', function(req, res, next) {
   }
 });
  
-// Auth Middleware - This will check if the token is valid
-// Only the requests that start with /api/v1/* will be checked for the token.
-// Any URL's that do not follow the below pattern should be avoided unless you 
-// are sure that authentication is not needed
-app.all('/api/v1/*', [require('./middleware/validateRequest')]);
-
-//app.use('/images/', express.static(path.join(__dirname,  '../images')));
+app.use('/hero', express.static(path.join(__dirname,  '../app/')));
 app.use('/', require('./routes.js'));
 //app.use(express.static(path.join(__dirname, '../dist')));
 
