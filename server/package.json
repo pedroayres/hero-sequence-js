@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "first application restful nodejs",
   "main": "app.js",
+  "repository": {
+      "type":"git",
+      "url": "git://github.com/pedroayres/hero-sequence-js.git"
+  },
   "scripts": {
     "dev": "./node_modules/nodemon/bin/nodemon.js server.js"
   },
