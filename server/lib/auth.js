@@ -5,7 +5,7 @@ var auth = {
  
   login: function(req, res) {
  
-    var username = req.body.username || '';
+    var username = req.body.login || '';
     var password = req.body.password || '';
  
     if (username == '' || password == '') {
@@ -19,14 +19,12 @@ var auth = {
     
     UserCtrl.checkUser(username, password, function(data) {
         if(!data.error) {
-          res.json(genToken(data));  
+          return res.json(genToken(data));  
         } else {
-          res.status(401);
-          res.json({
+          return res.status(401).json({
             "status": 401,
             "message": "Invalid credentials"
           });
-          return;
         }
     });
 
