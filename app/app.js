@@ -23,6 +23,11 @@
           controller: 'LoginCtrl',
           controllerAs: 'login'
         })
+        .when('/register', {
+          templateUrl: 'register/register.html',
+          controller: 'RegisterCtrl',
+          controllerAs: 'register'
+        })
         .when('/home', {
           templateUrl: 'home/home.html',
           controller: 'HomeCtrl',

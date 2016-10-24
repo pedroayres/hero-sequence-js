@@ -1,10 +1,11 @@
 (function(){
 	'use strict';
 	angular.module('heroSequenceApp').controller('LoginCtrl', LoginCtrl);
-	LoginCtrl.inject = ['ServerRequest'];
-	function LoginCtrl(){
+	LoginCtrl.inject = ['ServerRequest', '$location'];
+	function LoginCtrl(ServerRequest, $location){
 		var self = this;
 		self.doLogin = doLogin;
+    self.goToRegister = goToRegister;
 		
     function doLogin() {
         ServerRequest.post('login', self.user).then(function (data) {
@@ -20,6 +21,10 @@
             self.msgError = "A combinação de usuário e senha é inválida! Tente novamente.";
           }
         })
+    }
+
+    function goToRegister() {
+      $location.path( "/register" );
     }
 
 	}

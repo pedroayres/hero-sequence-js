@@ -1,0 +1,14 @@
+<div class="container-fluid login-screen">
+  <div class="md-box col-md-offset-4 col-md-4 login-area">
+    <form>
+      <h3 class="t-center">Faça seu cadastro para jogar !</h3>
+      <div class="form-group" ng-repeat="field in register.registerFields track by $index">
+        <input class="form-control" ng-model="register.user[field.name]" placeholder="{{field.placeholder}}" type="{{field.type}}" required>
+      </div>
+      <div class="form-group">
+      	<button class="btn btn-success btn-lg" ng-click="register.doRegister()">Registrar</button>
+      	<button class="btn btn-primary btn-lg" ng-click="register.goToLogin()">Voltar</button>
+      </div>
+    </form>
+  </div>
+</div>

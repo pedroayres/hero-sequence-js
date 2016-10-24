@@ -1,15 +1,16 @@
 <div class="container-fluid login-screen">
-  <div class="md-box col-md-offset-4 col-md-4">
+  <div class="md-box col-md-offset-4 col-md-4 login-area">
     <form>
+      <h3 class="t-center">Faça login para jogar</h3>
       <div class="form-group">
-        <input class="form-control" placeholder="seu@email.com" type="text" required>
+        <input class="form-control" placeholder="Digite seu login" type="text" required>
       </div>
       <div class="form-group">
-        <input class="form-control" placeholder="senha" type="password" required>
+        <input class="form-control" placeholder="Digite sua senha" type="password" required>
       </div>
       <div class="form-group">
-      	<button class="btn btn-success btn-lg">Entrar</button>
-      	<button class="btn btn-primary">Cadastre-se</button>
+      	<button class="btn btn-success btn-lg" ng-click="login.doLogin()">Entrar</button>
+      	<button class="btn btn-primary btn-lg" ng-click="login.goToRegister()">Cadastrar</button>
       </div>
     </form>
   </div>

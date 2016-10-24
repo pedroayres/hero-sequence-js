@@ -6,6 +6,7 @@
 @import url("ranking/ranking.css");
 @import url("scenario/scenario.css");
 @import url("subscribe/subscribe.css");
+@import url("components/helper.css");
 
 .viewport {
 	height: 100%;

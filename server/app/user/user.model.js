@@ -25,24 +25,20 @@ var UserSchema = new Schema({
         required: true
     },
     "hero": {
-        type: String,
-        required: true
+        type: String
     },
     "hero-combo-list": {
-        type: Array,
-        required: true
+        type: Array
     },
     "ranking-position": {
-        type: String,
-        required: true
+        type: String
     },
     "achievements": {
         type: Array
     },
     "created_at": {
         type: Date,
-        default: Date.now,
-        required: true
+        default: Date.now
     }
 });
 

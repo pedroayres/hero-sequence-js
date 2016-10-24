@@ -8,6 +8,9 @@
   -o-background-size: 100% 100%;
   background-size: 100% 100%;
 }
+.p-20 {
+	padding: 20px;
+}
 
 .login-logo {
   padding: 20px 50px 10px 50px;
