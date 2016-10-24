@@ -1,0 +1,9 @@
+<div class="container-fluid game-box">
+    <h2 class="t-center">Selecione o cenário que vai jogar</h2>
+    <div class="col-md-4" ng-repeat="screen in scenario.scenarios track by $index">
+        <img class="scenario-box" 
+            ng-src="{{screen.path}}" 
+            ng-class="{'scenario-box-selected': screen.selected}"
+            ng-click="scenario.selectScenario(screen)"/>
+    </div>
+</div>

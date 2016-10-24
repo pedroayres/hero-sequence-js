@@ -28,6 +28,11 @@
           controller: 'RegisterCtrl',
           controllerAs: 'register'
         })
+        .when('/select-scenario', {
+          templateUrl: 'select-scenario/select-scenario.html',
+          controller: 'SelectScenarioCtrl',
+          controllerAs: 'scenario'
+        })
         .when('/home', {
           templateUrl: 'home/home.html',
           controller: 'HomeCtrl',

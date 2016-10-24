@@ -3,3 +3,30 @@
   background-color: #673AB7;
   border-radius: 10px;
 }
+
+.game-box {
+  min-height: 500px;
+  width: 85%;
+  height: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 5%;
+  background: rgba(13, 14, 14, 0.81);
+  border-radius: 7px;
+  color: white;
+}
+
+.scenario-box {
+  height: 100%;
+  width: 100%;
+  max-height: 165px;
+  margin: 0 auto;
+  display: block;
+  border: solid;
+  margin-top: 25%;
+}
+
+.scenario-box-selected {
+  border-color: yellow;
+}
