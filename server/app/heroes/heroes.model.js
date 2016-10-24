@@ -3,31 +3,24 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var CaseSchema = new Schema({
+var HeroesSchema = new Schema({
     "name": {
         type: String,
         required: true
     },
-    "title": {
-        type: String,
+    "combo": {
+        type: Array,
         required: true
     },
-    "x": {
-        type: String,
+    "hp": {
+        type: Number,
         required: true
-    },
-    "y": {
-        type: String,
-        required: true
-    },
-    "members": {
-        type: Array
     },
     "created_at": {
         type: Date,
         default: Date.now,
         required: true
-    },
+    }
 });
 
-module.exports = mongoose.model('Case', CaseSchema);
+module.exports = mongoose.model('Heroes', HeroesSchema);
