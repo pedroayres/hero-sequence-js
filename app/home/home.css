@@ -1,0 +1,27 @@
+.full-bg .bg-1 {
+  background-image: url("../images/scenario-1.jpg");
+  height: 500px;
+}
+
+.home-hero {
+  position: absolute;
+  bottom: 100px;
+  right: 300px;
+  height: 260px;
+}
+
+.home-button-area {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+}
+
+.home-button-area .btn-success {
+  width: 200px;
+  margin-left: 28%;
+}
+
+.home-button-area .btn-primary {
+  width: 200px;
+  margin-left: 40px;
+}

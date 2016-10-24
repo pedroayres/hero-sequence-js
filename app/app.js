@@ -36,10 +36,11 @@
         .when('/home', {
           templateUrl: 'home/home.html',
           controller: 'HomeCtrl',
-          controllerAs: 'home',
-          access: {
-            requiredLogin: true
-          }
+          // access: {
+          //   requiredLogin: true
+          // },
+          controllerAs: 'home'
+
         })
         .otherwise({
           redirectTo: '/login'

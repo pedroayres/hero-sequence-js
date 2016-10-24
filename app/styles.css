@@ -8,15 +8,9 @@
 @import url("subscribe/subscribe.css");
 @import url("components/helper.css");
 @import url("components/boxes.css");
-
+@import url("select-scenario/select-scenario.css");
 
 .background {
 	min-height: 768px;
-	height: 100%;
-	width: 100%;
-	background: url("images/login-screen.jpg") no-repeat center center;
-	-webkit-background-size: 100% 100%;
-	-moz-background-size: 100% 100%;
-	-o-background-size: 100% 100%;
-	background-size: 100% 100%;
+	background-image: url("images/login-screen.jpg");
 }
