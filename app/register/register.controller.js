@@ -5,30 +5,46 @@
   function RegisterCtrl(ServerRequest, $location) {
     var self = this;
     self.goToLogin = goToLogin;
+    self.doRegister = doRegister;
+    self.alertStatus = "";
+    self.alertMessage = "";
+    self.user = {};
     self.registerFields = [{
-      field: "name",
+      name: "name",
       type: "text",
       placeholder: "Digite o seu nome"
     }, {
-      field: "email",
+      name: "email",
       type: "text",
       placeholder: "Digite seu email"
     }, {
-      field: "password",
+      name: "password",
       type: "password",
       placeholder: "Digite sua senha"
     }, {
-      field: "birthdate",
+      name: "birthdate",
       type: "text",
       placeholder: "Digite seu aniversário"
     }, {
-      field: "nickname",
+      name: "nickname",
       type: "text",
       placeholder: "Digite seu nick"
     }];
 
     function goToLogin() {
       $location.path("/login");
+    }
+
+    function doRegister() {
+      ServerRequest.post('user', self.user).then(function(res) {
+        if(res._id) {
+          self.alertStatus = "alert-success";
+          self.alertMessage = "Usuário cadastrado com sucesso";
+        } else {
+          self.alertStatus = "alert-danger";
+          self.alertMessage = "Ops! Algo errado aconteceu, tente novamente";
+        }
+      })
     }
 
   }
