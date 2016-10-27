@@ -40,6 +40,9 @@
         if(res._id) {
           self.alertStatus = "alert-success";
           self.alertMessage = "Usuário cadastrado com sucesso";
+          setTimeout(function() {
+            goToLogin();
+          }, 3000);
         } else {
           self.alertStatus = "alert-danger";
           self.alertMessage = "Ops! Algo errado aconteceu, tente novamente";
