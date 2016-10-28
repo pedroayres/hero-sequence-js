@@ -73,7 +73,7 @@
         $rootScope.showMenu = AuthenticationFactory.isLogged;
         // if the user is already logged in, take him to the home page
         if (AuthenticationFactory.isLogged && $location.path() === '/login') {
-          $location.path('/painel');
+          $location.path('/home');
         }
       }
     }

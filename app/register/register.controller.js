@@ -10,9 +10,13 @@
     self.alertMessage = "";
     self.user = {};
     self.registerFields = [{
+      name: "login",
+      type: "text",
+      placeholder: "Digite o seu login"
+    }, {
       name: "name",
       type: "text",
-      placeholder: "Digite o seu nome"
+      placeholder: "Digite seu nome"
     }, {
       name: "email",
       type: "text",
@@ -43,7 +47,11 @@
           setTimeout(function() {
             goToLogin();
           }, 3000);
+        } else if(res.status == 409){
+          self.alertStatus = "alert-danger";
+          self.alertMessage = "Usuário já existe cabron!";
         } else {
+          console.log(res)
           self.alertStatus = "alert-danger";
           self.alertMessage = "Ops! Algo errado aconteceu, tente novamente";
         }
