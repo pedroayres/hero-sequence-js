@@ -8,8 +8,9 @@
 @import url("subscribe/subscribe.css");
 @import url("components/helper.css");
 @import url("components/boxes.css");
+@import url("components/hero-and-life-bar.css");
 @import url("select-scenario/select-scenario.css");
-
+@import url("fight/fight.css");
 .background {
 	min-height: 768px;
 	background-image: url("images/login-screen.jpg");

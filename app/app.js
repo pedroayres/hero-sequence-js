@@ -42,6 +42,15 @@
           controllerAs: 'home'
 
         })
+        .when('/fight', {
+          templateUrl: 'fight/fight.html',
+          controller: 'FightCtrl',
+          // access: {
+          //   requiredLogin: true
+          // },
+          controllerAs: 'fight'
+
+        })
         .otherwise({
           redirectTo: '/login'
         });

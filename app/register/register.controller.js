@@ -43,7 +43,7 @@
       ServerRequest.post('user', self.user).then(function(res) {
         if(res._id) {
           self.alertStatus = "alert-success";
-          self.alertMessage = "Usuário cadastrado com sucesso";
+          self.alertMessage = self.user.name + ' cadastrado com sucesso';
           setTimeout(function() {
             goToLogin();
           }, 3000);

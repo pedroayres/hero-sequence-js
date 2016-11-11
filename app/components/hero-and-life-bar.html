@@ -1,0 +1,8 @@
+<div class="hero-and-life-bar" ng-class="{'enemy': enemy}">
+  <div class="life-bar">
+    <div class="life" ng-style="getLife()">
+      <p ng-bind="getLife().width"></p>
+    </div>
+  </div>
+  <img ng-src="{{hero.image}}" ng-class="{'mirror': hero.mirror}" id="{{hero.id}}"></img>
+</div>

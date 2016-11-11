@@ -10,7 +10,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  margin-top: 5%;
+  margin-top: 1%;
   background: rgba(13, 14, 14, 0.81);
   border-radius: 7px;
   color: white;
@@ -28,4 +28,8 @@
 
 .scenario-box-selected {
   border-color: yellow;
+}
+
+.mirror {
+  transform: scaleX(-1);
 }
