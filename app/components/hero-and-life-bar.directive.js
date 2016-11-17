@@ -26,7 +26,7 @@
       scope.getLife = getLife;
       scope.hero.image = getHero();
       scope.hero.id = new Date().getTime();
-      autoEnemyAttack();
+      //autoEnemyAttack();
       angular.element(document).on('keydown', dispatchMoviment);
       scope.$on('endGame', endGame);
 

@@ -52,7 +52,7 @@
         hasWinner = true;
 			} else if (self.enemy.life <= 0) {
 				self.enemy.life = 0;
-        hasWinner = 0;
+        hasWinner = true;
 			}
 
       if(hasWinner) {
