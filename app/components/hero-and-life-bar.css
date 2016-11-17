@@ -5,7 +5,8 @@
 .hero-and-life-bar img{
   position: absolute;
   bottom: 0;
-  height: 340px;
+  max-height: 340px;
+  max-width: 100%;
 }
 
 .enemy img {

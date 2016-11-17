@@ -1,4 +1,4 @@
-(function(){
+(function () {
 	'use strict';
 	angular.module('heroSequenceApp').controller('FightCtrl', FightCtrl);
 	FightCtrl.inject = ['$location', 'UserAuthFactory', '$scope'];
@@ -6,24 +6,24 @@
 		var self = this;
 		self.toProfile = toProfile;
 		self.toExit = toExit;
-	
-    self.hero = {
-      name: 'bartolomeo',
-      action: 'waiting',
-      mirror: false,
-      enemy: false,
-			life: 100,
-			stop: false
-    };
 
-    self.enemy = {
-      name: 'luffy',
-      action: 'waiting',
-      mirror: false,
-      enemy: true,
+		self.hero = {
+			name: 'bartolomeo',
+			action: 'waiting',
+			mirror: false,
+			enemy: false,
 			life: 100,
 			stop: false
-    };
+		};
+
+		self.enemy = {
+			name: 'luffy',
+			action: 'waiting',
+			mirror: false,
+			enemy: true,
+			life: 100,
+			stop: false
+		};
 
 		$scope.$on('attack', attack);
 
@@ -36,28 +36,35 @@
 			$location.path('/login');
 		}
 
-		function attack(event, enemyAttack) {
-			if(enemyAttack) {
-				self.hero.life -= 10;
+		function attack(event, currentAttack) {
+			if (currentAttack.isEnemy) {
+				self.hero.life -= currentAttack.power;
 			} else {
-				self.enemy.life -= 10;
+				self.enemy.life -= currentAttack.power;
 			}
-			console.log(event, enemyAttack);
 			checkEndGame();
 		}
 
 		function checkEndGame() {
-			if(self.hero.life <= 0) {
-				heroWin();
-			} else if(self.enemy.life <= 0) {
-				enemyWin();
+      var hasWinner = false;
+			if (self.hero.life <= 0) {
+				self.hero.life = 0;
+        hasWinner = true;
+			} else if (self.enemy.life <= 0) {
+				self.enemy.life = 0;
+        hasWinner = 0;
 			}
+
+      if(hasWinner) {
+        console.log('entrou');
+        stopAttacks();
+        $scope.$broadcast('endGame');
+      }
 		}
 
 		function stopAttacks() {
 			self.hero.stop = true;
 			self.enemy.stop = true;
-			console.log('parou')
 		}
 
 		function heroWin() {
@@ -66,6 +73,7 @@
 
 		function enemyWin() {
 			stopAttacks();
+
 		}
 	}
 })();
