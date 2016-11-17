@@ -6,7 +6,6 @@
     var self = this;
     self.selectScenario = selectScenario;
     self.toPlay = toPlay;
-
     self.scenarios = [
       {
         path: 'images/scenario-1.jpg',
@@ -32,10 +31,11 @@
         scenario.selected = false;
       });
     }
+    
     function toPlay() {
       SelectedScenarioService.setScenario(self.selectedScene);
       $location.path("/fight");
-
     }
+    
   }
 })();
