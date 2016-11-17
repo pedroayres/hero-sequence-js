@@ -63,15 +63,15 @@
 }
 
 .attack {
-  -webkit-animation: attack 3s infinite; /* Safari 4+ */
-  -moz-animation:    attack 3s infinite; /* Fx 5+ */
-  -o-animation:      attack 3s infinite; /* Opera 12+ */
-  animation:         attack 5s infinite; /* IE 10+, Fx 29+ */
+  -webkit-animation: attack 3s ease-in; /* Safari 4+ */
+  -moz-animation:    attack 3s ease-in; /* Fx 5+ */
+  -o-animation:      attack 3s ease-in; /* Opera 12+ */
+  animation:         attack 5s ease-in; /* IE 10+, Fx 29+ */
 }
 
 .attack-enemy {
-  -webkit-animation: attack-enemy 3s infinite; /* Safari 4+ */
-  -moz-animation:    attack-enemy 3s infinite; /* Fx 5+ */
-  -o-animation:      attack-enemy 3s infinite; /* Opera 12+ */
-  animation:         attack-enemy 3s infinite; /* IE 10+, Fx 29+ */
+  -webkit-animation: attack-enemy 3s ease-in; /* Safari 4+ */
+  -moz-animation:    attack-enemy 3s ease-in; /* Fx 5+ */
+  -o-animation:      attack-enemy 3s ease-in; /* Opera 12+ */
+  animation:         attack-enemy 3s ease-in; /* IE 10+, Fx 29+ */
 }

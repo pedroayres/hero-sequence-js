@@ -26,11 +26,12 @@
       scope.getLife = getLife;
       scope.hero.image = getHero();
       scope.hero.id = new Date().getTime();
+      autoEnemyAttack();
 
       angular.element(document).on('keydown', dispatchMoviment);
       function getLife() {
         var life = {
-          width: '75%'
+          width: scope.hero.life + '%'
         };
         return life;
       }
@@ -40,7 +41,7 @@
       }
 
       function dispatchMoviment(event) {
-        if (scope.hero.enemy) {
+        if (!scope.hero.enemy  && !scope.hero.stop) {
           if (event.keyCode === 87) { // W
             attack('soco');
           } else if (event.keyCode === 65) { // A
@@ -67,6 +68,7 @@
         $timeout(function () {
           setAction('waiting');
           console.log('waiting')
+          scope.$emit('attack', scope.hero.enemy);
         }, 2000);
         $timeout(function () {
           angular.element('#' + scope.hero.id).removeClass(scope.hero.enemy ? 'attack-enemy' : 'attack');
@@ -74,6 +76,15 @@
         }, 3000);
       }
 
+      function autoEnemyAttack() {
+        if (scope.hero.enemy && !scope.hero.stop) {
+          $timeout(function () {
+            attack('soco');
+            autoEnemyAttack();
+          }, 8000);
+          
+        }
+      }
     }
 
   }
