@@ -1,14 +1,22 @@
 (function () {
 	'use strict';
 	angular.module('heroSequenceApp').controller('FightCtrl', FightCtrl);
-	FightCtrl.inject = ['$location', 'UserAuthFactory', '$scope'];
-	function FightCtrl($location, UserAuthFactory, $scope) {
+	FightCtrl.inject = ['$location', 'UserAuthFactory', '$scope', 'SelectedHeroService', 'SelectedScenarioService'];
+	function FightCtrl($location, UserAuthFactory, $scope, SelectedHeroService, SelectedScenarioService) {
 		var self = this;
 		self.toProfile = toProfile;
 		self.toExit = toExit;
 
+		if(SelectedHeroService.getHero().name) {
+			self.heroName = SelectedHeroService.getHero().name;
+		} else {
+			self.heroName = 'bartolomeu';
+		}
+
+		self.selectedScenario = SelectedScenarioService.getScenario().path;
+
 		self.hero = {
-			name: 'bartolomeo',
+			name: self.heroName,
 			action: 'waiting',
 			mirror: false,
 			enemy: false,
