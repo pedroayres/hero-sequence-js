@@ -1,0 +1,35 @@
+<div class="container">
+	<div class="row m-t-80">
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="col-md-6">
+						<h4> {{profile.userInfo.nickname}} </h4>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="" ng-repeat="combo in profile.userInfo.combo track by $index">
+					<div ng-repeat="(key, list) in combo track by $index">
+						{{key}} - {{list}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<h2>Selecione seu herói</h2>
+					<div class="" ng-repeat="hero in profile.heroInfo track by $index">
+						<div class="col-md-2 text-center" ng-click="profile.changedHero">
+							<img ng-src="{{'images/heroes/' + hero.name +'_waiting.gif'}}" />
+							<h2>{{hero.hp}} </h2>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -33,6 +33,16 @@
           controller: 'SelectScenarioCtrl',
           controllerAs: 'scenario'
         })
+        .when('/select-hero', {
+          templateUrl: 'select-hero/select-hero.html',
+          controller: 'SelectHeroCtrl',
+          controllerAs: 'hero'
+        })
+        .when('/profile', {
+          templateUrl: 'profile/profile.html',
+          controller: 'ProfileCtrl',
+          controllerAs: 'profile'
+        })
         .when('/home', {
           templateUrl: 'home/home.html',
           controller: 'HomeCtrl',

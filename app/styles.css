@@ -2,7 +2,7 @@
 @import url("home/home.css");
 @import url("in-game/in-game.css");
 @import url("login/login.css");
-@import url("login/login.css");
+@import url("profile/profile.css");
 @import url("ranking/ranking.css");
 @import url("scenario/scenario.css");
 @import url("subscribe/subscribe.css");
@@ -10,8 +10,14 @@
 @import url("components/boxes.css");
 @import url("components/hero-and-life-bar.css");
 @import url("select-scenario/select-scenario.css");
+@import url("select-hero/select-hero.css");
 @import url("fight/fight.css");
 .background {
 	min-height: 768px;
-	background-image: url("images/login-screen.jpg");
+  background-image: url(images/login-screen.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
 }

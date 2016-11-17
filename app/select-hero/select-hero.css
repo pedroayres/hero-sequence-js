@@ -1,0 +1,22 @@
+.bordered {
+    border: 1px solid black;
+    border-radius: 3px;  
+    cursor: pointer;
+    background-color: white;
+}
+.bordered:hover {
+    background-color: #0CA22E;
+}
+
+.panel {
+    background-color: #f0f0f0;
+}
+
+.center-img {
+    margin: 0 auto;
+}
+
+.bg-green {
+    background-color: #0CA22E;
+
+}

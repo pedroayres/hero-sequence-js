@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
 	<link rel="stylesheet" type="text/css" href="styles.css">
 
 	<title>Hero Sequence</title>
 </head>
+
 <body ng-app="heroSequenceApp">
 	<div class="background full-bg" ng-view>
 	</div>
 
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.js"></script>
 
-  <script src="app.js"></script>
-  <script src="app.constant.js"></script>
-  <script src="login/login.controller.js"></script>
-  <script src="register/register.controller.js"></script>
-  <script src="fight/fight.controller.js"></script>
-  <script src="select-scenario/select-scenario.controller.js"></script>
-  <script src="home/home.controller.js"></script>
-  <script src="components/hero-and-life-bar.directive.js"></script>
-  <script src="auth/authentication.factory.js"></script>
-  <script src="auth/tokenInterceptor.factory.js"></script>
-  <script src="auth/userAuth.factory.js"></script>
-  <script src="request/request-server.factory.js"></script>
+	<script src="app.js"></script>
+	<script src="app.constant.js"></script>
+	<script src="login/login.controller.js"></script>
+	<script src="register/register.controller.js"></script>
+	<script src="fight/fight.controller.js"></script>
+	<script src="select-scenario/selected-scenario.service.js"></script>
+	<script src="select-scenario/select-scenario.controller.js"></script>
+	<script src="select-hero/selected-hero.service.js"></script>
+	<script src="select-hero/select-hero.controller.js"></script>
+	<script src="home/home.controller.js"></script>
+	<script src="components/hero-and-life-bar.directive.js"></script>
+	<script src="profile/profile.controller.js"></script>
+	<script src="auth/authentication.factory.js"></script>
+	<script src="auth/tokenInterceptor.factory.js"></script>
+	<script src="auth/userAuth.factory.js"></script>
+	<script src="request/request-server.factory.js"></script>
 </body>
+
 </html>

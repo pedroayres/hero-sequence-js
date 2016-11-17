@@ -6,6 +6,14 @@
 	padding: 20px;
 }
 
+.m-t-20 {
+	margin-top: 20px;
+}
+
+.m-t-80 {
+	margin-top: 80px;
+}
+
 .full-bg {
 	-webkit-background-size: 100% 100%;
 	-moz-background-size: 100% 100%;

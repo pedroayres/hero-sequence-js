@@ -1,0 +1,17 @@
+.main-box {
+    padding: 20px;
+    background-color: #3c3c3c;
+}
+.align-box {
+    margin-left: 80px;
+    margin-top: 30px;
+}
+.profile-name{
+    background-color: #3c3c3c;
+    color: #A2510C;
+}
+.align-image{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

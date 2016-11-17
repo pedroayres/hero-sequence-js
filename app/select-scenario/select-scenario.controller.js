@@ -1,10 +1,11 @@
 (function () {
   'use strict';
   angular.module('heroSequenceApp').controller('SelectScenarioCtrl', SelectScenarioCtrl);
-  SelectScenarioCtrl.inject = [];
-  function SelectScenarioCtrl() {
+  SelectScenarioCtrl.inject = ['SelectedScenarioService', '$location'];
+  function SelectScenarioCtrl(SelectedScenarioService, $location) {
     var self = this;
     self.selectScenario = selectScenario;
+    self.toPlay = toPlay;
 
     self.scenarios = [
       {
@@ -23,12 +24,18 @@
     function selectScenario(scenario) {
       deselectAllScenarios();
       scenario.selected = true;
+      self.selectedScene = scenario;
     }
 
     function deselectAllScenarios() {
-      self.scenarios.forEach(function(scenario){
+      self.scenarios.forEach(function (scenario) {
         scenario.selected = false;
       });
+    }
+    function toPlay() {
+      SelectedScenarioService.setScenario(self.selectedScene);
+      $location.path("/fight");
+
     }
   }
 })();
