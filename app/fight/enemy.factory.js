@@ -8,7 +8,7 @@
     var enemy = {
       name: HEROES[Utils.getRandomInt(0, HEROES.length - 1)],
       action: 'waiting',
-      mirror: false,
+      mirror: true,
       enemy: true,
       life: 100,
       stop: false,
@@ -23,16 +23,16 @@
 
     function createEnemyAttacks() {
       var enemyListAttack = [{
-        name: 'attack_1',
+        name: 'attack_0',
         power: 10
       }, {
-        name: 'attack_2',
+        name: 'attack_1',
         power: 20
       }, {
-        name: 'attack_3',
+        name: 'attack_2',
         power: 30
       }, {
-        name: 'attack_4',
+        name: 'attack_3',
         power: 40
       }];
 

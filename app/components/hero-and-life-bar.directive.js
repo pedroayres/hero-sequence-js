@@ -43,13 +43,13 @@
 
       function dispatchMoviment(event) {
         if (!scope.hero.enemy && !scope.hero.stop && scope.hero.life > 0) {
-          if (event.keyCode === 87) { // W
+          if (event.keyCode === 81) { // Q
             attack('attack_0', 10);
-          } else if (event.keyCode === 65) { // A
+          } else if (event.keyCode === 87) { // W
             attack('attack_1', 20);
-          } else if (event.keyCode === 83) { // S
+          } else if (event.keyCode === 69) { // E
             attack('attack_2', 30);
-          } else if (event.keyCode === 68) { // D
+          } else if (event.keyCode === 82) { // R
             attack('attack_3', 40)
           }
         }

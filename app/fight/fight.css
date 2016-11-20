@@ -1,5 +1,6 @@
 .game-box .fight {
-  height: 550px;
+  min-height: 550px;
+  height: 95vh;
   border-radius: 13px;
   margin-top: 5px;
   border: solid black 2px;
@@ -14,17 +15,17 @@
 }
 
 .control-area {
-  height: 120px;
+  height: 60px;
   width: 350px;
   background: rgba(0, 0, 0, 0.47);
   z-index: 99;
   position: absolute;
-  top: 103%;
-  margin-bottom: 80px;
+  top: 20%;
+  left: 11%;
 }
 
 .control-area .buttom {
-  height: 50%;
+  height: 100%;
   border: solid white 1px;
   font-size: 26px;
   text-align: center;
