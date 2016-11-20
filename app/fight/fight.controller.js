@@ -1,40 +1,25 @@
 (function () {
 	'use strict';
 	angular.module('heroSequenceApp').controller('FightCtrl', FightCtrl);
-	FightCtrl.inject = ['$location', 'UserAuthFactory', '$scope', 'SelectedHeroService', 'SelectedScenarioService'];
-	function FightCtrl($location, UserAuthFactory, $scope, SelectedHeroService, SelectedScenarioService) {
+	FightCtrl.inject = ['$location', 'UserAuthFactory', '$scope', 'SelectedHeroService', 'SelectedScenarioService', '$timeout', 'EnemyFactory'];
+	function FightCtrl($location, UserAuthFactory, $scope, SelectedHeroService, SelectedScenarioService, $timeout, EnemyFactory) {
+    // Private variables
 		var self = this;
+    var timeToHeroAttack = 5; 
+
+    // Public variables
 		self.toProfile = toProfile;
 		self.toExit = toExit;
+    self.attackTime = timeToHeroAttack;
+		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario-1.jpg';
+		self.hero = SelectedHeroService.getHero();
+		self.enemy = EnemyFactory.generate();
 
-		if(SelectedHeroService.getHero().name) {
-			self.heroName = SelectedHeroService.getHero().name;
-		} else {
-			self.heroName = 'bartolomeu';
-		}
-
-		self.selectedScenario = SelectedScenarioService.getScenario().path;
-
-		self.hero = {
-			name: self.heroName,
-			action: 'waiting',
-			mirror: false,
-			enemy: false,
-			life: 100,
-			stop: false
-		};
-
-		self.enemy = {
-			name: 'luffy',
-			action: 'waiting',
-			mirror: false,
-			enemy: true,
-			life: 100,
-			stop: false
-		};
-
+    // Watchers and call functions
 		$scope.$on('attack', attack);
+    heroAttackTime();
 
+    // Functions
 		function toProfile() {
 			$location.path('/profile');
 		}
@@ -54,20 +39,19 @@
 		}
 
 		function checkEndGame() {
-      var hasWinner = false;
+			var hasWinner = false;
 			if (self.hero.life <= 0) {
 				self.hero.life = 0;
-        hasWinner = true;
+				hasWinner = true;
 			} else if (self.enemy.life <= 0) {
 				self.enemy.life = 0;
-        hasWinner = true;
+				hasWinner = true;
 			}
 
-      if(hasWinner) {
-        console.log('entrou');
-        stopAttacks();
-        $scope.$broadcast('endGame');
-      }
+			if (hasWinner) {
+				stopAttacks();
+				$scope.$broadcast('endGame');
+			}
 		}
 
 		function stopAttacks() {
@@ -75,13 +59,30 @@
 			self.enemy.stop = true;
 		}
 
-		function heroWin() {
-			stopAttacks();
-		}
+    function heroAttackTime() {
+      $timeout(function(){
+        self.attackTime -= 1;
+        if(self.attackTime === 0) {
+          self.hero.stop = true;
+          enemyAttack();
+        } else {
+          heroAttackTime();
+        }
+      }, 1000);
+    }
 
-		function enemyWin() {
-			stopAttacks();
+    function enemyAttack() {
+      $timeout(function(){
+        $scope.$broadcast('enemyAttack');
+        $timeout(function(){
+          if(self.hero.life > 0 && self.enemy.life > 0) {
+            self.attackTime = timeToHeroAttack;
+            self.hero.stop = false;
+            heroAttackTime();
+          }
+        }, 4000); 
+      }, 2000); 
+    }
 
-		}
 	}
 })();

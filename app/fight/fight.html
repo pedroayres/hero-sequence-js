@@ -1,7 +1,8 @@
 <div class="container-fluid game-box">
     <div class="fight bg col-lg-12" ng-style="{'background-image':'url({{fight.selectedScenario}})'}">
       <div class="col-lg-6 col-md-6 hero-area"><hero-and-life-bar hero="fight.hero"></hero-and-life-bar></div>
-      <div class="col-lg-6 col-md-6 hero-area"><hero-and-life-bar enemy="true" hero="fight.enemy"></hero-and-life-bar></div>  
+      <div class="col-lg-6 col-md-6 hero-area"><hero-and-life-bar enemy="true" hero="fight.enemy"></hero-and-life-bar></div>
+      <div class="attack-time"><p ng-bind="fight.attackTime"/></div>  
     </div>
     <div class="control-area">
       <div class="col-lg-6 buttom">Q</div>

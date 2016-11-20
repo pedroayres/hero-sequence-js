@@ -5,9 +5,9 @@
     .module('heroSequenceApp')
     .directive('heroAndLifeBar', heroAndLifeBar);
 
-  heroAndLifeBar.inject = ['$timeout']
+  heroAndLifeBar.inject = ['$timeout', 'Utils']
 
-  function heroAndLifeBar($timeout) {
+  function heroAndLifeBar($timeout, Utils) {
     var directive = {
       restrict: 'E',
       transclude: true,
@@ -26,23 +26,9 @@
       scope.getLife = getLife;
       scope.hero.image = getHero();
       scope.hero.id = new Date().getTime();
-      //autoEnemyAttack();
       angular.element(document).on('keydown', dispatchMoviment);
       scope.$on('endGame', endGame);
-
-      var enemyListAttack = [{
-        name: 'attack_1',
-        power: 10
-      }, {
-        name: 'attack_2',
-        power: 20
-      }, {
-        name: 'attack_3',
-        power: 30
-      },{
-        name: 'attack_4',
-        power: 40
-      }];
+      scope.$on('enemyAttack', autoEnemyAttack);
 
       function getLife() {
         var life = {
@@ -56,7 +42,7 @@
       }
 
       function dispatchMoviment(event) {
-        if (!scope.hero.enemy  && !scope.hero.stop) {
+        if (!scope.hero.enemy && !scope.hero.stop && scope.hero.life > 0) {
           if (event.keyCode === 87) { // W
             attack('attack_0', 10);
           } else if (event.keyCode === 65) { // A
@@ -82,7 +68,7 @@
         }, 500);
         $timeout(function () {
           setAction('waiting');
-          scope.$emit('attack', {isEnemy: scope.hero.enemy, power: power});
+          scope.$emit('attack', { isEnemy: scope.hero.enemy, power: power });
         }, 2000);
         $timeout(function () {
           angular.element('#' + scope.hero.id).removeClass(scope.hero.enemy ? 'attack-enemy' : 'attack');
@@ -91,33 +77,26 @@
 
       function autoEnemyAttack() {
         if (scope.hero.enemy && !scope.hero.stop) {
-          $timeout(function () {
-            var enemyAttack = getRandomEnenmyAttack();
-            attack(enemyAttack.name, enemyAttack.power);
-            autoEnemyAttack();
-          }, 7000);
+          var enemyAttack = getRandomEnenmyAttack();
+          attack(enemyAttack.name, enemyAttack.power);
         }
       }
 
       function getRandomEnenmyAttack() {
-        var numAttack = getRandomInt(0, enemyListAttack.length - 1);
+        var enemyListAttack = scope.hero.attacks;
+        var numAttack = Utils.getRandomInt(0, enemyListAttack.length - 1);
         return enemyListAttack[numAttack];
       }
 
-      function getRandomInt(min, max) {
-          return Math.floor(Math.random() * (max - min + 1)) + min;
-      }
-      
       function endGame() {
         console.log('endGame');
-        if(scope.hero.life <= 0) {
+        if (scope.hero.life <= 0) {
           setAction('lose');
           scope.$apply();
         } else {
           setAction('win');
           scope.$apply();
         }
-        
       }
 
 
