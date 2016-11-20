@@ -11,11 +11,11 @@
         path: 'images/scenario-1.jpg',
         selected: true
       }, {
-        path: 'images/scenario-2.jpeg',
+        path: 'images/scenario-2.jpg',
         selected: false
       },
       {
-        path: 'images/scenario-3.png',
+        path: 'images/scenario-3.jpg',
         selected: false
       }
     ];

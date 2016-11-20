@@ -11,7 +11,7 @@
 		self.toProfile = toProfile;
 		self.toExit = toExit;
     self.attackTime = timeToHeroAttack;
-		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario-1.jpg';
+		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario-2.jpg';
 		self.hero = SelectedHeroService.getHero();
 		self.enemy = EnemyFactory.generate();
 
