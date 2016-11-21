@@ -18,7 +18,10 @@
     self.getHero = getHero;
 
     function setHero(hero) {
-      currentHero = hero;
+      var fields = Object.keys(hero);
+      fields.forEach(function(field){
+        currentHero[field] = hero[field];
+      });
     }
 
     function getHero() {
