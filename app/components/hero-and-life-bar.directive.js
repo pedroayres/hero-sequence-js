@@ -26,9 +26,10 @@
       scope.getLife = getLife;
       scope.hero.image = getHero();
       scope.hero.id = new Date().getTime();
-      angular.element(document).on('keydown', dispatchMoviment);
+      
       scope.$on('endGame', endGame);
       scope.$on('enemyAttack', autoEnemyAttack);
+      scope.$on('attackHero', attackHero);
 
       function getLife() {
         var life = {
@@ -41,19 +42,6 @@
         return 'images/heroes/' + scope.hero.name + '_' + scope.hero.action + '.gif';
       }
 
-      function dispatchMoviment(event) {
-        if (!scope.hero.enemy && !scope.hero.stop && scope.hero.life > 0) {
-          if (event.keyCode === 81) { // Q
-            attack('attack_0', 10);
-          } else if (event.keyCode === 87) { // W
-            attack('attack_1', 20);
-          } else if (event.keyCode === 69) { // E
-            attack('attack_2', 30);
-          } else if (event.keyCode === 82) { // R
-            attack('attack_3', 40)
-          }
-        }
-      }
 
       function setAction(action) {
         scope.hero.action = action;
@@ -73,6 +61,12 @@
         $timeout(function () {
           angular.element('#' + scope.hero.id).removeClass(scope.hero.enemy ? 'attack-enemy' : 'attack');
         }, 3000);
+      }
+
+      function attackHero(event, action, power) {
+        if(!scope.hero.enemy) {
+          attack(action, power);
+        }
       }
 
       function autoEnemyAttack() {

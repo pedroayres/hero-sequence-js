@@ -25,3 +25,62 @@
   background-position: center center;
   background-size: 100% 100%;
 }
+
+@font-face {
+    font-family: halo;
+    src: url('../fonts/Halo3.ttf');
+}
+
+.teste {
+  font-family: halo
+}
+
+.hs-input {
+	background: transparent;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-image: initial;
+	border-bottom: 2px solid rgb(130, 11, 11);
+	border-radius: 0px;
+  width: 100%;
+  color: #adabab;
+  font-size: 23px;
+}
+
+*:focus {
+    outline: none;
+ }
+
+ body {
+   font-family: halo;
+ }
+
+ .btn-success {
+   border-radius: 0;
+   background-color: rgb(130, 11, 11);
+   border-color: rgb(130, 11, 11);
+ }
+
+.btn-success:hover, btn-success:active {
+  background-color: #990000;
+  border-color: #990000;
+}
+
+.btn-primary {
+  background-color:#b97016;
+  border-color: #b97016;
+  border-radius: 0;
+}
+
+.btn-primary:hover, btn-primary:active {
+  background-color:#9c6522;
+  border-color: #9c6522;
+  border-radius: 0;
+}
+
+
+h3 {
+  font-size: 50px;
+  color: white;
+}

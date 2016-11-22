@@ -11,12 +11,13 @@
 		self.toProfile = toProfile;
 		self.toExit = toExit;
     self.attackTime = timeToHeroAttack;
-		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario-2.jpg';
+		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario_3.gif';
 		self.hero = SelectedHeroService.getHero();
 		self.enemy = EnemyFactory.generate();
 
     // Watchers and call functions
 		$scope.$on('attack', attack);
+		angular.element(document).on('keydown', dispatchMoviment);
     heroAttackTime();
 
     // Functions
@@ -83,6 +84,21 @@
         }, 4000); 
       }, 2000); 
     }
+
+		function dispatchMoviment(event) {
+			if (!self.hero.stop && self.hero.life > 0) {
+				if (event.keyCode === 81) { // Q
+					 $scope.$broadcast('attackHero', 'attack_0', 10);
+				} else if (event.keyCode === 87) { // W
+					 $scope.$broadcast('attackHero', 'attack_1', 20);
+				} else if (event.keyCode === 69) { // E
+					 $scope.$broadcast('attackHero', 'attack_2', 30);
+				} else if (event.keyCode === 82) { // R
+					 $scope.$broadcast('attackHero', 'attack_3', 40)
+				}
+			}
+		}
+
 
 	}
 })();

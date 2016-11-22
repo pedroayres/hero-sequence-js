@@ -8,14 +8,14 @@
     self.toPlay = toPlay;
     self.scenarios = [
       {
-        path: 'images/scenario-1.jpg',
+        path: 'images/scenario_1.gif',
         selected: true
       }, {
-        path: 'images/scenario-2.jpg',
+        path: 'images/scenario_2.gif',
         selected: false
       },
       {
-        path: 'images/scenario-3.jpg',
+        path: 'images/scenario_3.gif',
         selected: false
       }
     ];
