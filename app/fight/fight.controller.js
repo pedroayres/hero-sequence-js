@@ -3,24 +3,30 @@
 	angular.module('heroSequenceApp').controller('FightCtrl', FightCtrl);
 	FightCtrl.inject = ['$location', 'UserAuthFactory', '$scope', 'SelectedHeroService', 'SelectedScenarioService', '$timeout', 'EnemyFactory'];
 	function FightCtrl($location, UserAuthFactory, $scope, SelectedHeroService, SelectedScenarioService, $timeout, EnemyFactory) {
-    // Private variables
+		// Private variables
 		var self = this;
-    var timeToHeroAttack = 5; 
+		var timeToHeroAttack = 5;
 
-    // Public variables
+		// Public variables
+		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario_3.gif';
+		self.waitingAttack = true;
+		self.typedSequence = '';
+		self.currentAttack = {};
+
+		// Public methos
 		self.toProfile = toProfile;
 		self.toExit = toExit;
-    self.attackTime = timeToHeroAttack;
-		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario_3.gif';
+		self.attackTime = timeToHeroAttack;
+
 		self.hero = SelectedHeroService.getHero();
 		self.enemy = EnemyFactory.generate();
 
-    // Watchers and call functions
+		// Watchers and call functions
 		$scope.$on('attack', attack);
 		angular.element(document).on('keydown', dispatchMoviment);
-    heroAttackTime();
+		heroAttackTime();
 
-    // Functions
+		// Functions
 		function toProfile() {
 			$location.path('/profile');
 		}
@@ -60,43 +66,72 @@
 			self.enemy.stop = true;
 		}
 
-    function heroAttackTime() {
-      $timeout(function(){
-        self.attackTime -= 1;
-        if(self.attackTime === 0) {
-          self.hero.stop = true;
-          enemyAttack();
-        } else {
-          heroAttackTime();
-        }
-      }, 1000);
-    }
+		function heroAttackTime() {
+			$timeout(function () {
+				self.attackTime -= 1;
+				if (self.attackTime === 0) {
+					self.hero.stop = true;
+					enemyAttack();
+				} else {
+					heroAttackTime();
+				}
+			}, 1000);
+		}
 
-    function enemyAttack() {
-      $timeout(function(){
-        $scope.$broadcast('enemyAttack');
-        $timeout(function(){
-          if(self.hero.life > 0 && self.enemy.life > 0) {
-            self.attackTime = timeToHeroAttack;
-            self.hero.stop = false;
-            heroAttackTime();
-          }
-        }, 4000); 
-      }, 2000); 
-    }
+		function enemyAttack() {
+			self.typedSequence = '';
+			self.waitingAttack = true;
+			self.sequence = '';
+			self.currentAttack = {};
+			$timeout(function () {
+				$scope.$broadcast('enemyAttack');
+				$timeout(function () {
+					if (self.hero.life > 0 && self.enemy.life > 0) {
+						self.attackTime = timeToHeroAttack;
+						self.hero.stop = false;
+						heroAttackTime();
+					}
+				}, 4000);
+			}, 2000);
+		}
 
 		function dispatchMoviment(event) {
-			if (!self.hero.stop && self.hero.life > 0) {
-				if (event.keyCode === 81) { // Q
-					 $scope.$broadcast('attackHero', 'attack_0', 10);
-				} else if (event.keyCode === 87) { // W
-					 $scope.$broadcast('attackHero', 'attack_1', 20);
-				} else if (event.keyCode === 69) { // E
-					 $scope.$broadcast('attackHero', 'attack_2', 30);
-				} else if (event.keyCode === 82) { // R
-					 $scope.$broadcast('attackHero', 'attack_3', 40)
-				}
+			if (!self.hero.stop && self.hero.life > 0 && self.waitingAttack) {
+				showAttackSequence(event.keyCode);
+			} else if (!self.waitingAttack) {
+				checkSequence(event.key);
 			}
+		}
+
+		function showAttackSequence(keyCode) {
+			self.hero.attacks.forEach(function (attack) {
+				if (attack.keyCode === keyCode) {
+					self.waitingAttack = false;
+					self.currentAttack = attack;
+					generateSequence(attack.power);
+				}
+			});
+		}
+
+		function generateSequence(power) {
+			self.sequence = stringGen(power / 10 * 4);
+		}
+
+		function checkSequence(letter) {
+			self.typedSequence += letter;
+			if(self.typedSequence.trim() == self.sequence.trim()) {
+				$scope.$broadcast('attackHero', self.currentAttack.name, self.currentAttack.power);
+			}
+			
+		}
+
+		function stringGen(len) {
+			var text = " ";
+			var charset = "abcdefghijklmnopqrstuvwxyz";
+			for (var i = 0; i < len; i++) {
+				text += charset.charAt(Math.floor(Math.random() * charset.length));
+			}
+			return text;
 		}
 
 

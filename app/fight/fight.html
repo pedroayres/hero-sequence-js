@@ -5,9 +5,17 @@
       <div class="attack-time"><p ng-bind="fight.attackTime"/></div>  
     </div>
     <div class="control-area">
-      <div class="col-lg-3 buttom">Q <span>10 <i class="glyphicon sword"></i></span></div>
-      <div class="col-lg-3 buttom">W <span>20 <i class="glyphicon sword"></i></span></div>
-      <div class="col-lg-3 buttom">E <span>30 <i class="glyphicon sword"></i></span></div>
-      <div class="col-lg-3 buttom">R <span>40 <i class="glyphicon sword"></i></span></div>
+      <div class="col-lg-3 buttom" ng-repeat="attack in fight.hero.attacks" ng-show="fight.waitingAttack">
+        {{attack.letter}}
+         <span>{{attack.power}}
+            <i class="glyphicon sword"></i>
+            </span>
+      </div>
+      <div class="buttom">
+        <p ng-bind="fight.sequence"/>
+      </div>
+    </div>
+    <div class="control-area typed-area" ng-if="fight.typedSequence">
+      <p ng-bind="fight.typedSequence"/>
     </div>
 </div>

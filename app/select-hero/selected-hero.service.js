@@ -11,7 +11,8 @@
 			mirror: false,
 			enemy: false,
 			life: 100,
-			stop: false
+			stop: false,
+      attacks: generateAttacks()
 		};
 
     self.setHero = setHero;
@@ -26,6 +27,32 @@
 
     function getHero() {
       return currentHero;
+    }
+
+    function generateAttacks() {
+      var enemyListAttack = [{
+        name: 'attack_0',
+        power: 10,
+        letter: 'Q',
+        keyCode: 81
+      }, {
+        name: 'attack_1',
+        power: 20,
+        letter: 'W',
+        keyCode: 87
+      }, {
+        name: 'attack_2',
+        power: 30,
+        letter: 'E',
+        keyCode: 69
+      }, {
+        name: 'attack_3',
+        power: 40,
+        letter: 'R',
+        keyCode: 82
+      }];
+
+      return enemyListAttack;
     }
 
   }
