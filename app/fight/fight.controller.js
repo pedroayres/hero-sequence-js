@@ -5,7 +5,7 @@
 	function FightCtrl($location, UserAuthFactory, $scope, SelectedHeroService, SelectedScenarioService, $timeout, EnemyFactory) {
 		// Private variables
 		var self = this;
-		var timeToHeroAttack = 5;
+		var timeToHeroAttack = 7;
 
 		// Public variables
 		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario_3.gif';
@@ -98,8 +98,10 @@
 		function dispatchMoviment(event) {
 			if (!self.hero.stop && self.hero.life > 0 && self.waitingAttack) {
 				showAttackSequence(event.keyCode);
-			} else if (!self.waitingAttack) {
+			} else if (!self.waitingAttack && event.keyCode !== 27) {
 				checkSequence(event.key);
+			} else if(event.keyCode == 27) {
+				backToSelectAttack();
 			}
 		}
 
@@ -121,17 +123,25 @@
 			self.typedSequence += letter;
 			if(self.typedSequence.trim() == self.sequence.trim()) {
 				$scope.$broadcast('attackHero', self.currentAttack.name, self.currentAttack.power);
+				backToSelectAttack();
 			}
 			
 		}
 
 		function stringGen(len) {
 			var text = " ";
-			var charset = "abcdefghijklmnopqrstuvwxyz";
+			var charset = "abcdfghijklmnoprstuvxyz";
 			for (var i = 0; i < len; i++) {
 				text += charset.charAt(Math.floor(Math.random() * charset.length));
 			}
 			return text;
+		}
+		
+		function backToSelectAttack() {
+			self.typedSequence = '';
+			self.waitingAttack = true;
+			self.sequence = '';
+			self.currentAttack = {};		
 		}
 
 

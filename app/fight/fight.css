@@ -18,6 +18,9 @@
   position: absolute;
   top: 20%;
   left: 11%;
+  font-family: normal;
+  letter-spacing: 9px;
+  text-transform: uppercase;
 }
 
 .control-area .buttom {
@@ -67,3 +70,5 @@
   text-align: center;
   line-height: 53px;
 }
+
+.contro

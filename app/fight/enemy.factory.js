@@ -10,7 +10,7 @@
       action: 'waiting',
       mirror: true,
       enemy: true,
-      life: 100,
+      life: 80,
       stop: false,
       attacks: createEnemyAttacks()
     };
