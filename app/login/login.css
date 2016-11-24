@@ -3,5 +3,10 @@
 }
 
 .login-area {
-  margin-top: 15%;
+  margin-top: 100px;
 }
+
+.login-area h4{
+  color: white;
+}
+

@@ -5,13 +5,7 @@
 
     function SelectHeroCtrl(ServerRequest, $location, AuthenticationFactory, SelectedHeroService) {
         var self = this;
-
-        self.heroSpecs = heroSpecs;
-        self.userSpecs = userSpecs;
-        self.changedHero = changedHero;
         self.sendHero = sendHero;
-
-        self.showSelected = false;
 
         userSpecs();
         heroSpecs();
@@ -29,22 +23,8 @@
             });
         }
 
-        function changedHero(hero) {
-            unselectHero(hero);
-            hero.selected = true;
-            self.showSelected = true;
-            self.selectHero = hero.name;
-            self.selectedHeroObj = hero;
-        }
-
-        function unselectHero() {
-            self.heroInfo.forEach(function (element) {
-                element.selected = false;
-            }, this);
-        }
-
-        function sendHero() {
-            SelectedHeroService.setHero(self.selectedHeroObj);
+        function sendHero(hero) {
+            SelectedHeroService.setHero(hero);
             $location.path( "/select-scenario" );
         }
     }

@@ -18,8 +18,7 @@ var HeroesSchema = new Schema({
     },
     "created_at": {
         type: Date,
-        default: Date.now,
-        required: true
+        default: Date.now
     }
 });
 

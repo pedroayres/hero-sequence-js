@@ -31,8 +31,26 @@
     src: url('../fonts/Halo3.ttf');
 }
 
-.teste {
-  font-family: halo
+@font-face {
+    font-family: future;
+    src: url('../fonts/future.otf');
+}
+
+@font-face {
+    font-family: astro;
+    src: url('../fonts/astro.tff');
+}
+
+.future {
+  font-family: future;
+}
+
+.astro {
+  font-family: astro;
+}
+
+.halo {
+  font-family: halo;
 }
 
 .hs-input {
@@ -56,24 +74,26 @@
    font-family: halo;
  }
 
- .btn-success {
+ .btn-hs-1 {
    border-radius: 0;
    background-color: rgb(130, 11, 11);
    border-color: rgb(130, 11, 11);
+   color: white;
  }
 
-.btn-success:hover, btn-success:active {
+.btn-hs-1:hover, btn-hs-1:active {
   background-color: #990000;
   border-color: #990000;
 }
 
-.btn-primary {
+.btn-hs-2 {
   background-color:#b97016;
   border-color: #b97016;
   border-radius: 0;
+  color: white;
 }
 
-.btn-primary:hover, btn-primary:active {
+.btn-hs-2:hover, btn-hs-2:active {
   background-color:#9c6522;
   border-color: #9c6522;
   border-radius: 0;
@@ -83,4 +103,12 @@
 h3 {
   font-size: 50px;
   color: white;
+}
+
+.transparent {
+  background-color: transparent;
+}
+
+.centered {
+  margin: 0 auto;
 }

@@ -5,17 +5,22 @@
       <div class="attack-time"><p ng-bind="fight.attackTime"/></div>  
     </div>
     <div class="control-area">
-      <div class="col-lg-3 buttom" ng-repeat="attack in fight.hero.attacks" ng-show="fight.waitingAttack">
+      <div class="col-lg-3 buttom" ng-repeat="attack in fight.hero.attacks" ng-if="fight.waitingAttack">
         {{attack.letter}}
          <span>{{attack.power}}
             <i class="glyphicon sword"></i>
-            </span>
+          </span>
       </div>
       <div class="buttom">
         <p ng-bind="fight.sequence"/>
       </div>
     </div>
-    <div class="control-area typed-area" ng-if="fight.typedSequence">
+    <div class="control-area typed-area" ng-show="fight.typedSequence">
       <p ng-bind="fight.typedSequence"/>
+    </div>
+    <div class="win-lose" ng-if="fight.statusFight">
+      <p>{{fight.statusFight}}</p>
+      <button class="btn btn-hs-1 btn-lg full-width" ng-click="fight.init()">Jogar novamente</button>
+      <button class="btn btn-hs-1 btn-lg full-width" ng-click="fight.toHome()">Voltar</button>
     </div>
 </div>

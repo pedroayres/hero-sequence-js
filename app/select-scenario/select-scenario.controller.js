@@ -19,6 +19,7 @@
         selected: false
       }
     ];
+    self.selectedScene = self.scenarios[0];
 
     function selectScenario(scenario) {
       deselectAllScenarios();

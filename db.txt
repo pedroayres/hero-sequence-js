@@ -1,0 +1,69 @@
+{
+    "name": "bartolomeo",
+    "hp": 100,
+    "combo": [
+      {
+        "name": "Chute Rotatório",
+        "power": 10
+      },
+      {
+        "name": "Cabeçada Mortal",
+        "power": 20
+      },
+      {
+        "name": "Soco do Infinito",
+        "power": 30
+      },
+      {
+        "name": "Soco Triplo",
+        "power": 40
+      }
+    ]
+  }
+
+
+{
+    "name": "luffy",
+    "hp": 100,
+    "combo": [
+      {
+        "name": "Soco Básico",
+        "power": 10
+      },
+      {
+        "name": "Chute Esticado",
+        "power": 20
+      },
+      {
+        "name": "Cabeçada",
+        "power": 30
+      },
+      {
+        "name": "Super Soco",
+        "power": 40
+      }
+    ]
+  }
+
+{
+    "name": "gildtesoro",
+    "hp": 100,
+    "combo": [
+      {
+        "name": "Soco Básico",
+        "power": 10
+      },
+      {
+        "name": "Espadada Fatal",
+        "power": 20
+      },
+      {
+        "name": "Soco do Além",
+        "power": 30
+      },
+      {
+        "name": "Chute Lunar",
+        "power": 40
+      }
+    ]
+  }

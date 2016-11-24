@@ -8,27 +8,34 @@
 		var timeToHeroAttack = 7;
 
 		// Public variables
-		self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario_3.gif';
-		self.waitingAttack = true;
-		self.typedSequence = '';
-		self.currentAttack = {};
+		function init() {
+			self.selectedScenario = SelectedScenarioService.getScenario().path || 'images/scenario_3.gif';
+			self.waitingAttack = true;
+			self.typedSequence = '';
+			self.statusFight = '';
+			self.currentAttack = {};
+			self.hero = SelectedHeroService.getHero();
+			self.enemy = EnemyFactory.generate();
+      self.statusFight = '';
+      self.attackTime = timeToHeroAttack;
+      self.hero.life = 100;
+      self.enemy.life = 100;
+		}
 
 		// Public methos
-		self.toProfile = toProfile;
+		self.toHome = toHome;
 		self.toExit = toExit;
-		self.attackTime = timeToHeroAttack;
-
-		self.hero = SelectedHeroService.getHero();
-		self.enemy = EnemyFactory.generate();
+    self.init = init;
 
 		// Watchers and call functions
 		$scope.$on('attack', attack);
 		angular.element(document).on('keydown', dispatchMoviment);
+    init();
 		heroAttackTime();
 
 		// Functions
-		function toProfile() {
-			$location.path('/profile');
+		function toHome() {
+			$location.path('/home');
 		}
 
 		function toExit() {
@@ -50,9 +57,11 @@
 			if (self.hero.life <= 0) {
 				self.hero.life = 0;
 				hasWinner = true;
+				self.statusFight = 'Você perdeu';
 			} else if (self.enemy.life <= 0) {
 				self.enemy.life = 0;
 				hasWinner = true;
+				self.statusFight = 'Você ganhou';
 			}
 
 			if (hasWinner) {

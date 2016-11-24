@@ -1,30 +1,30 @@
 (function () {
-    'use strict';
-    angular.module('heroSequenceApp').controller('ProfileCtrl', ProfileCtrl);
-    ProfileCtrl.inject = ['ServerRequest', '$location', 'AuthenticationFactory'];
+  'use strict';
+  angular.module('heroSequenceApp').controller('ProfileCtrl', ProfileCtrl);
+  ProfileCtrl.inject = ['ServerRequest', '$location', 'AuthenticationFactory'];
 
-    function ProfileCtrl(ServerRequest, $location, AuthenticationFactory) {
-        var self = this;
+  function ProfileCtrl(ServerRequest, $location, AuthenticationFactory) {
+    var self = this;
 
-        self.heroSpecs = heroSpecs;
-        self.userSpecs = userSpecs;
+    self.heroSpecs = heroSpecs;
+    self.userSpecs = userSpecs;
 
-        userSpecs();
-        heroSpecs();
+    userSpecs();
+    heroSpecs();
 
-        function userSpecs() {
-            ServerRequest.get('user/' + AuthenticationFactory.user._id).then(function (res) {
-                console.log(res);
-                self.userInfo = res;
-            });
-        }
-
-        function heroSpecs() {
-            ServerRequest.get('heroes/').then(function (res) {
-                self.heroInfo = res;
-            });
-        }
+    function userSpecs() {
+      ServerRequest.get('user/' + AuthenticationFactory.user._id).then(function (res) {
+        console.log(res);
+        self.userInfo = res;
+      });
     }
+
+    function heroSpecs() {
+      ServerRequest.get('heroes/').then(function (res) {
+        self.heroInfo = res;
+      });
+    }
+  }
 
 
 } ());

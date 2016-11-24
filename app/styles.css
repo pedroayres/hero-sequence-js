@@ -13,7 +13,7 @@
 @import url("select-hero/select-hero.css");
 @import url("fight/fight.css");
 .background {
-	min-height: 768px;
+	min-height: 1000px;
   background-image: url(images/login-screen.jpg);
   background-repeat: no-repeat;
   background-position: center;

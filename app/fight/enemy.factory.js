@@ -5,19 +5,18 @@
 
   function EnemyFactory(HEROES, Utils) {
     var self = this;
-    var enemy = {
-      name: HEROES[Utils.getRandomInt(0, HEROES.length - 1)],
-      action: 'waiting',
-      mirror: true,
-      enemy: true,
-      life: 80,
-      stop: false,
-      attacks: createEnemyAttacks()
-    };
-
     self.generate = generate;
 
     function generate() {
+      var enemy = {
+        name: HEROES[Utils.getRandomInt(0, HEROES.length - 1)],
+        action: 'waiting',
+        mirror: true,
+        enemy: true,
+        life: 100,
+        stop: false,
+        attacks: createEnemyAttacks()
+      };
       return enemy;
     }
 

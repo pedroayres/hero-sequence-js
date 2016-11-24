@@ -18,7 +18,7 @@
   position: absolute;
   top: 20%;
   left: 11%;
-  font-family: normal;
+  font-family: future;
   letter-spacing: 9px;
   text-transform: uppercase;
 }
@@ -46,6 +46,7 @@
   line-height: 13px;
   left: 26px;
   color: black;
+  letter-spacing: 3px;
 }
 
 .sword {
@@ -62,13 +63,25 @@
 }
 
 .typed-area {
-  top: 35%; 
+  top: 35%;
+  width: auto;
 }
 
 .typed-area p {
+  padding: 0 25px;
   font-size: 25px;
   text-align: center;
   line-height: 53px;
 }
 
-.contro
+.win-lose {
+  position: absolute;
+  height: 250px;
+  width: 520px;
+  background: rgba(14, 14, 14, 0.72);
+  left: 30%;
+  top: 30%;
+  font-size: 50px;
+  text-align: center;
+  z-index: 99;
+}

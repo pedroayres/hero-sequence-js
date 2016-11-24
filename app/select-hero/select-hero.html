@@ -1,43 +1,14 @@
 <div class="container">
-	<div class="row m-t-80">
-		<div class="col-md-4">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<div class="col-md-12">
-						<h4> Bem-vindo, {{hero.userInfo.nickname}} </h4>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<div class="row">
-		<div class="col-md-8">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<h3>Selecione seu herói</h3>
-					<div class="" ng-repeat="heroes in hero.heroInfo track by $index">
-						<div class="col-md-4 text-center" ng-click="hero.changedHero(heroes)">
-							<div class="bordered" ng-class="{'bg-green': heroes.selected}">
-								<img ng-src="{{'images/heroes/' + heroes.name +'_waiting.gif'}}" class="img-responsive" />
-								<h4>{{heroes.name}} </h4>
-								<h2>HP: {{heroes.hp}}</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-md-4" ng-show="hero.showSelected">
-			<div class="panel panel-default">
-				<div class="panel-body">
-					<div class="bordered">
-						<img ng-src="{{'images/heroes/' + hero.selectHero +'_waiting.gif'}}" class="img-responsive center-img" />
-						<h4 class="text-center">{{hero.selectHero}}</h4>
-					</div>
-					<div class="row m-t-20">
-						<div class="col-md-12 text-right">
-							<button class="btn btn-success" ng-click="hero.sendHero()">Selecionar</button>
-						</div>
+		<div class="col-md-12 transparent select-hero">
+			<h3 class="t-center">Selecione seu herói</h3>
+			<div class="future" ng-repeat="heroes in hero.heroInfo track by $index">
+				<div class="col-md-4 text-center" ng-click="hero.changedHero(heroes)">
+					<div class="bordered" ng-class="{'bg-green': heroes.selected}">
+						<img ng-src="{{'images/heroes/' + heroes.name +'_waiting.gif'}}" class="img-responsive centered" />
+						<h2>{{heroes.name}} </h2>
+						<p ng-repeat="c in heroes.combo">{{c.name}} - Dano: {{c.power}}</p>
+						<button class="btn btn-hs-1 show-on-hover centered" ng-click="hero.sendHero(heroes)">Selecionar</button>
 					</div>
 				</div>
 			</div>

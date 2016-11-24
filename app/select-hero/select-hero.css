@@ -1,22 +1,48 @@
 .bordered {
-    border: 1px solid black;
-    border-radius: 3px;  
-    cursor: pointer;
-    background-color: white;
+  border: 1px solid black;
+  border-radius: 3px;  
+  cursor: pointer;
+  background-color: rgba(21, 20, 20, 0.54);
+  color: white;
 }
 .bordered:hover {
-    background-color: #0CA22E;
+  background-color: rgba(146, 19, 19, 0.72);
+  color: white;
 }
 
 .panel {
-    background-color: #f0f0f0;
+  background-color: #f0f0f0;
 }
 
 .center-img {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .bg-green {
-    background-color: #0CA22E;
+  background-color: #0CA22E;
+}
+.show-on-hover {
+  display: none;
+}
 
+.bordered:hover .show-on-hover {
+  display: block;
+}
+
+.select-hero .btn-hs-1 {
+  text-align: center;
+  font-size: 21px;
+  margin: 20px auto;
+  padding: 10px;
+  text-transform: uppercase;
+  font-family: halo;
+}
+
+.select-hero img {
+  max-height: 180px;
+}
+
+.bordered p {
+  font-size: 16px;
+  font-family: halo;
 }
