@@ -144,6 +144,8 @@
 			self.currentAttack = {};		
 		}
 
+		
+
 
 	}
 })();
