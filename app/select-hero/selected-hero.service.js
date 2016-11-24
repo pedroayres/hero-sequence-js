@@ -1,11 +1,12 @@
 (function () {
   'use strict';
-  angular.module('heroSequenceApp').service('SelectedHeroService', SelectedHeroService);
+  angular.module('heroSequenceApp').factory('SelectedHeroService', SelectedHeroService);
   SelectedHeroService.inject = ['HEROES'];
 
   function SelectedHeroService(HEROES) {
     var self = this;
     var currentHero = {
+      id: new Date().getTime(),
 			name: HEROES[0],
 			action: 'waiting',
 			mirror: false,
@@ -15,8 +16,10 @@
       attacks: generateAttacks()
 		};
 
-    self.setHero = setHero;
-    self.getHero = getHero;
+    return {
+      setHero: setHero,
+      getHero: getHero
+    };
 
     function setHero(hero) {
       var fields = Object.keys(hero);
@@ -26,7 +29,7 @@
     }
 
     function getHero() {
-      return currentHero;
+      return angular.copy(currentHero);
     }
 
     function generateAttacks() {

@@ -18,8 +18,8 @@
 			self.enemy = EnemyFactory.generate();
       self.statusFight = '';
       self.attackTime = timeToHeroAttack;
-      self.hero.life = 100;
-      self.enemy.life = 100;
+      $scope.$broadcast('init');
+      heroAttackTime();
 		}
 
 		// Public methos
@@ -31,7 +31,6 @@
 		$scope.$on('attack', attack);
 		angular.element(document).on('keydown', dispatchMoviment);
     init();
-		heroAttackTime();
 
 		// Functions
 		function toHome() {

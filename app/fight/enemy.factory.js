@@ -9,6 +9,7 @@
 
     function generate() {
       var enemy = {
+        id: new Date().getTime(),
         name: HEROES[Utils.getRandomInt(0, HEROES.length - 1)],
         action: 'waiting',
         mirror: true,
@@ -17,7 +18,7 @@
         stop: false,
         attacks: createEnemyAttacks()
       };
-      return enemy;
+      return angular.copy(enemy);
     }
 
     function createEnemyAttacks() {

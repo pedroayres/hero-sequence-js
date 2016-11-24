@@ -25,11 +25,11 @@
     function link(scope, element) {
       scope.getLife = getLife;
       scope.hero.image = getHero();
-      scope.hero.id = new Date().getTime();
       
       scope.$on('endGame', endGame);
       scope.$on('enemyAttack', autoEnemyAttack);
       scope.$on('attackHero', attackHero);
+      scope.$on('init', initHero);
 
       function getLife() {
         var life = {
@@ -42,6 +42,11 @@
         return 'images/heroes/' + scope.hero.name + '_' + scope.hero.action + '.gif';
       }
 
+      function initHero() {
+        $timeout(function () {
+          setAction('waiting');
+        }, 0);
+      }
 
       function setAction(action) {
         scope.hero.action = action;
